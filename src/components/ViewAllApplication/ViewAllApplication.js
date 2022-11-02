@@ -49,6 +49,7 @@ const ViewAllApplication = () => {
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Date of Birth</th>
                         <th scope="col">State Of Origin</th>
                         <th scope="col">Gender</th>
                         <th scope="col">BVN</th>
@@ -66,6 +67,7 @@ const ViewAllApplication = () => {
                             <th scope="row">{index + 1}</th>
                             <td>{item.firstName + " " + item.lastName}</td>
                             <td>{item.email}</td>
+                            <td>{item.dateOfBirth}</td>
                             <td>{item.stateOfOrigin}</td>
                             <td>{item.gender}</td>
                             <td>{item.bvn}</td>
