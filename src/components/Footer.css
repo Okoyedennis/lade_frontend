@@ -1,0 +1,45 @@
+.footer {
+    width: 100%;
+    background-color: rgb(0, 65, 40);
+    color: #eee;
+    padding: 3rem 1rem;
+}
+
+.footer .container {
+    max-width: 1240px;
+    margin: auto;
+    text-align: center;
+}
+
+.footer ul {
+    display: flex;
+    justify-content: center;
+}
+
+.footer li {
+    padding: 1rem;
+}
+
+.footer li a {
+    color: #fff;
+    font-weight: 500;
+}
+
+.footer li a:hover {
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--secondary-color);
+}
+
+.bottom {
+    text-align: center;
+    padding-top: 3rem;
+}
+
+.line {
+    margin-bottom: 1rem;
+}
+
+
+
+
+

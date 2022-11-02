@@ -1,0 +1,28 @@
+tr td{
+    text-transform: capitalize;
+}
+
+tr td:nth-child(3){
+    text-transform: lowercase;
+}
+
+.page-link{
+    cursor: pointer !important;
+}
+
+.viewUsers{
+    margin-top: 8rem !important;
+}
+
+.viewUsers__wrapper .card-body{
+    overflow: scroll;
+}
+
+.applicationZero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-transform: capitalize;
+
+}
