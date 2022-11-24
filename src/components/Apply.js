@@ -74,7 +74,6 @@ const Apply = () => {
             .sendForm(
               "service_s33q0nk",
               "template_rs82gzh",
-              // form.current,
               e.target,
               "user_F1KvHoYXiTu1HRN9fVl8g"
             )
@@ -89,7 +88,7 @@ const Apply = () => {
       })
       .catch((error) => {
         setTimeout(() => {
-          toast.success("Unexpected Error.", {
+          toast.error("Unexpected Error.", {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: true,
