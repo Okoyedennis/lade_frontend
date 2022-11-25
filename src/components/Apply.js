@@ -72,10 +72,10 @@ const Apply = () => {
 
           emailjs
             .sendForm(
-              "service_bwn8wr4",
-              "template_0gizq58",
+              "service_jh99oai",
+              "template_osxvwgk",
               e.target,
-              "GkGpJESqyOo1YFxvK"
+              "tTQte_lj9D2HXiw5l"
             )
             .then(
               (result) => {
