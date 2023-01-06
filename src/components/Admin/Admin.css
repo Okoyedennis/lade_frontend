@@ -37,3 +37,15 @@
 .loanTable{
   cursor: pointer;
 }
+
+.applicationZero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(80vh - 70px);
+}
+
+.applicationZero h2 {
+  text-transform: capitalize;
+  text-align: center;
+}
