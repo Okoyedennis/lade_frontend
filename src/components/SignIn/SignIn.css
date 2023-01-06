@@ -1,0 +1,117 @@
+.login {
+  height: 100vh !important;
+  background-color: rgb(245,244,244);
+}
+
+.login .login__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh !important;
+  width: 100%;
+}
+
+.login__wrapper form {
+  text-align: center;
+  width: 350px;
+  margin: auto;
+}
+
+.login__wrapper img {
+  height: fit-content;
+  width: 130px;
+  object-fit: cover;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem !important;
+  margin: auto;
+margin-left: -1rem;
+}
+
+.login__wrapper form h1 {
+  font-weight: 400 !important;
+  margin-bottom: 1rem !important;
+  font-size: calc(1.3rem + 0.6vw);
+  line-height: 1.2;
+}
+
+.form-float {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+  font-weight: 400;
+  appearance: none;
+  border-radius: 0.375rem;
+  height: calc(3.5rem + 2px);
+  background-color: #fff;
+}
+
+.login__wrapper .first_child {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.login__wrapper .second_child {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.login__wrapper input[type="email"] {
+  border: none;
+  margin-left: 1rem;
+}
+
+.login__wrapper input[type="password"], .login__wrapper input[type="text"]{
+  border: none;
+  margin-left: 1rem;
+}
+
+.form-float label {
+  margin-left: 1rem;
+}
+
+.form-float svg {
+  margin-left: 0.3rem;
+  font-size: 1.3rem;
+}
+
+
+.login__wrapper .form-control {
+  padding: 0 !important;
+}
+
+.login__wrapper .form-control:focus {
+  box-shadow: none !important;
+}
+
+.login__wrapper button {
+  border: 1px solid rgb(0, 65, 40);
+  background-color: rgb(0, 65, 40);
+  opacity: 0.5rem !important;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.login__wrapper button:hover,
+.login__wrapper button:focus,
+.login__wrapper button:active,
+.login__wrapper button:disabled {
+  border: 1px solid rgb(0, 65, 40) !important;
+  background-color: rgb(0, 65, 40) !important;
+  opacity: 1rem !important;
+}
+
+.login__wrapper p,
+.login__wrapper a {
+  color: #6c757d !important;
+  opacity: 1;
+  text-decoration: none;
+}
+
+.login__wrapper .p {
+  margin-bottom: 1rem !important;
+  margin-top: 3rem !important;
+}
