@@ -47,8 +47,10 @@ const Signup = () => {
       !user.email ||
       !user.gender ||
       !user.password
-    )
+    ) {
+      setLoading(false);
       return;
+    }
 
     if (user.password.length < 7) {
       toast.error("Password should not be less than 8 characters", {
@@ -60,6 +62,8 @@ const Signup = () => {
         draggable: true,
         progress: undefined,
       });
+      setLoading(false);
+
       return;
     }
 
@@ -73,6 +77,8 @@ const Signup = () => {
         draggable: true,
         progress: undefined,
       });
+      setLoading(false);
+
       return;
     }
 
@@ -102,6 +108,7 @@ const Signup = () => {
       })
       .catch((error) => {
         console.log(error);
+
         if (error.response.status === 400) {
           toast.error(error.response.data.message, {
             position: "top-right",
@@ -112,8 +119,8 @@ const Signup = () => {
             draggable: true,
             progress: undefined,
           });
+          setLoading(false);
         }
-        setLoading(false);
       });
   };
 
