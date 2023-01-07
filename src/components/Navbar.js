@@ -89,11 +89,14 @@ const Navbar = () => {
               Home
             </a>
           </li>
-          <li className="nav-item">
-            <NavLink to="/apply" onClick={closeMenu}>
-              Apply
-            </NavLink>
-          </li>
+          {currentUser?.user.role !== Role.ADMIN && (
+            <li className="nav-item">
+              <NavLink to="/apply" onClick={closeMenu}>
+                Apply
+              </NavLink>
+            </li>
+          )}
+
           <li className="nav-item">
             {currentUser ? (
               <>
@@ -116,7 +119,7 @@ const Navbar = () => {
           </li>
           {currentUser?.user.role === Role.ADMIN && (
             <li className="nav-item">
-              <Link to="/admin">Admin</Link>
+              <Link to="/admin">Admin Page</Link>
             </li>
           )}
         </ul>
