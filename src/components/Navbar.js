@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useRef, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../images/AgricultureLogo/1.png";
 import { clearCurrentUser } from "../store/actions/user";
 
@@ -85,18 +85,29 @@ const Navbar = () => {
         </div>
         <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
-            <a href="/" onClick={closeMenu}>
+            <NavLink to="/" onClick={closeMenu}>
               Home
-            </a>
+            </NavLink>
           </li>
           {currentUser?.user.role !== Role.ADMIN && (
+            <>
+              <li className="nav-item">
+                <NavLink to="/apply" onClick={closeMenu}>
+                  Apply
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink to="/donate" onClick={closeMenu}>
+                  Invest
+                </NavLink>
+              </li>
+            </>
+          )}
+          {currentUser?.user?.role === Role.ADMIN && (
             <li className="nav-item">
-              <NavLink to="/apply" onClick={closeMenu}>
-                Apply
-              </NavLink>
+              <NavLink to="/admin">Admin Page</NavLink>
             </li>
           )}
-
           <li className="nav-item">
             {currentUser ? (
               <>
@@ -117,11 +128,6 @@ const Navbar = () => {
               </a>
             )}
           </li>
-          {currentUser?.user.role === Role.ADMIN && (
-            <li className="nav-item">
-              <Link to="/admin">Admin Page</Link>
-            </li>
-          )}
         </ul>
       </nav>
       {currentUser ? <ViewUserDetails ref={detailsComponent} /> : null}

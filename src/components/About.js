@@ -4,8 +4,12 @@ import { MdPeople, MdSchool } from "react-icons/md";
 import img from "../images/photo.jpeg";
 import "./About.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Role } from "./Model/Role";
 
 const About = () => {
+  const currentUser = useSelector((state) => state.user);
+
   return (
     <>
       <div className="about" id="about">
@@ -22,7 +26,16 @@ const About = () => {
               small/medium enterprises (SMEs) as vehicles for sustainable
               economic development and employment generation
             </p>
-            <Link to="/apply">Apply</Link>
+            {currentUser?.user.role !== Role.ADMIN && (
+              <div className="actions">
+                <Link to="/apply" className="button">
+                  Apply
+                </Link>
+                <Link to="/donate" className="button">
+                  Invest
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

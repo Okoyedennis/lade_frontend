@@ -118,3 +118,10 @@
 .login__wrapper .f-button{
 margin-top: 10px;
 }
+
+.strip__credential{
+    position: absolute;
+    bottom: 5rem;
+    margin-top: 2rem;
+    color: red;
+}

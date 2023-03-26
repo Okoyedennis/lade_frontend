@@ -1,43 +1,36 @@
-import axios from "axios";
-import moment from "moment";
-import React, { useRef, useState } from "react";
-import { useEffect } from "react";
-import { authHeader } from "../Services/BaseService";
-import BASE_URL from "../Services/Constant";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { authHeader } from '../Services/BaseService';
+import BASE_URL from '../Services/Constant';
 import CurrencyFormat from "react-currency-format";
-import ViewindividualLoan from "./ViewindividualLoan";
 
-const AllLoanApplicant = () => {
-  const [search, setSearch] = useState("");
-  const [loan, setLoan] = useState([]);
-  const [viewLoan, setViewLoan] = useState("");
 
-  const viewFullLoanComponent = useRef();
+const AllDonation = () => {
+     const [search, setSearch] = useState("");
+    const [donation, setDonation] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get(`${BASE_URL}/apply/all`, {
-        headers: authHeader(),
-      })
-      .then((resp) => {
-        setLoan(resp.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  const viewFullApplication = (item) => {
-    setViewLoan(item);
-    viewFullLoanComponent.current?.showFullApplication();
-  };
+      useEffect(() => {
+        axios
+          .get(`${BASE_URL}/donation/all`, {
+            headers: authHeader(),
+          })
+          .then((resp) => {
+            setDonation(resp.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }, []);
+    
+    console.log(donation);
+    
     return (
       <>
-        {loan.length > 0 ? (
+        {donation.length > 0 ? (
           <div className="card mt-4 viewUsers">
             <div className="card-header d-flex justify-content-between p-4">
               <div className="col-6">
-                <h3>View All Loans</h3>
+                <h3>View All Users</h3>
               </div>
               <div className="col-4 text-end">
                 <input
@@ -54,29 +47,27 @@ const AllLoanApplicant = () => {
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">FirstName</th>
-                    <th scope="col">LastName</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Country</th>
                     <th scope="col">BVN</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Date Applied</th>
+                    <th scope="col">Amount Donated</th>
+                    <th scope="col">Message</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {loan
+                  {donation
                     .filter((val) =>
                       val.firstName.toLowerCase().includes(search.toLowerCase())
                     )
                     .map((item, index) => (
-                      <tr
-                        key={item.id}
-                        onClick={() => viewFullApplication(item)}
-                        className="loanTable"
-                      >
+                      <tr key={item.id}>
                         <th scope="row">{index + 1}</th>
-                        <td className="capitalize">{item.firstName}</td>
-                        <td className="capitalize">{item.lastName}</td>
+                        <td className="capitalize">
+                          {item.firstName} {item.lastName}
+                        </td>
                         <td>{item.email}</td>
+                        <td>{item.country}</td>
                         <td>{item.bvn}</td>
                         <td>
                           <CurrencyFormat
@@ -85,9 +76,10 @@ const AllLoanApplicant = () => {
                             value={item.amount}
                             displayType={"text"}
                             thousandSeparator={true}
+                            prefix={"₦"}
                           />
                         </td>
-                        <td>{moment(item.createdAt).calendar("LL")}</td>
+                        <td>{item.message}</td>
                       </tr>
                     ))}
                 </tbody>
@@ -96,13 +88,11 @@ const AllLoanApplicant = () => {
           </div>
         ) : (
           <div className="container applicationZero">
-            <h2>No Loan Applicant</h2>
+            <h2>No Donation Yet</h2>
           </div>
         )}
-
-        <ViewindividualLoan viewLoan={viewLoan} ref={viewFullLoanComponent} />
       </>
     );
-};
+}
 
-export default AllLoanApplicant;
+export default AllDonation

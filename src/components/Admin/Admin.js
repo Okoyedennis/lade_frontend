@@ -3,18 +3,29 @@ import "./Admin.css"
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import AllUser from "./AllUser";
 import AllLoanApplicant from "./AllLoanApplicant";
+import AllDonation from "./AllDonation";
 
 const Admin = () => {
   const [users, setUsers] = useState(true);
   const [loanApplication, setLoanApplication] = useState(false);
+  const [donations, setDonations] = useState(false);
 
   const handleUserApplication = () => {
     setUsers(true);
     setLoanApplication(false);
+    setDonations(false)
   };
 
   const handleLoanApplication = () => {
     setLoanApplication(true);
+    setUsers(false);
+    setDonations(false);
+
+  };
+
+  const handleDonationApplication = () => {
+    setDonations(true);
+    setLoanApplication(false);
     setUsers(false);
   };
 
@@ -26,6 +37,10 @@ const Admin = () => {
     {
       title: "View Loan Application",
       func: handleLoanApplication,
+    },
+    {
+      title: "View All Donation",
+      func: handleDonationApplication,
     },
   ];
   return (
@@ -58,9 +73,23 @@ const Admin = () => {
               ))}
             </DropdownButton>
           )}
+          {donations && (
+            <DropdownButton
+              className="btn mt-5"
+              id="dropdown-basic-button"
+              title={"View All Donation"}
+            >
+              {data.map(({ title, func }) => (
+                <>
+                  <Dropdown.Item onClick={func}>{title}</Dropdown.Item>
+                </>
+              ))}
+            </DropdownButton>
+          )}
         </div>
         {users && <AllUser />}
         {loanApplication && <AllLoanApplicant />}
+        {donations && <AllDonation />}
       </div>
     </div>
   );

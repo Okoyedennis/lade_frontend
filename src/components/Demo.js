@@ -1,8 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './Demo.css'
+import { Role } from './Model/Role';
 
 const Demo = () => {
+  const currentUser = useSelector((state) => state.user);
+
     return (
       <div className="demo" id="demo">
         <div className="demo_wrapper container">
@@ -13,9 +17,16 @@ const Demo = () => {
               democratic, self-sustaining, two-sided marketplace which thrives
               on trust and is built on community and quality content.
             </p>
-            <Link to="/apply" className="button">
-              Apply
-            </Link>
+            {currentUser?.user.role !== Role.ADMIN && (
+              <div className="actions">
+                <Link to="/apply" className="button">
+                  Apply
+                </Link>
+                <Link to="/donate" className="button">
+                  Invest
+                </Link>
+              </div>
+            )}
           </div>
           <div className="col-2s">
             <iframe

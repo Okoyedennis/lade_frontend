@@ -31,7 +31,7 @@
 }
 
 .hero .content p:nth-child(2) {
-  font-size: 2rem;
+  font-size: 1.7rem;
   width: 50%;
   margin-top: 2rem;
   font-weight: 400;
@@ -39,11 +39,23 @@
 }
 
 .hero a, .hero a:hover {
-  margin: 2rem 0;
+  margin: 1rem 0;
   width: fit-content !important;
   background-color: rgb(0, 65, 40);
   border: 1px solid rgb(0, 65, 40);
   color: #fff;
+
+}
+
+.actions{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.actions a{
+  padding: 0.9rem 2.5rem;
+  text-transform: capitalize;
 }
 
 @media screen and (max-width: 940px) {

@@ -36,10 +36,10 @@ const ViewindividualLoan = forwardRef((props, ref) => {
       <form>
         <div className="modal-header">
           <h5 className="modal-title">
-            View School Details of{" "}
-            <b>
+            View school details of{" "}
+            <span >
               {viewLoan.firstName} {viewLoan.lastName}
-            </b>
+            </span>
           </h5>
           <button
             type="button"
