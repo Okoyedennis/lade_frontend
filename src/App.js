@@ -13,6 +13,8 @@ import ViewAllApplicationPage from "./pages/ViewAllApplicationPage";
 import SuccessApplySent from "./components/SuccessApplySent";
 import DonatePage from "./pages/DonatePage";
 import { useState } from "react";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 
 function App() {
   const [amountFromDonation, setAmountFromDonation] = useState(0);
@@ -61,6 +63,11 @@ function App() {
         />
         <Route path="/signIn" element={<SignInPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/forgotPassword" element={<ForgotPasswordPage />} />
+        <Route
+          path="/resetpassword/:resetToken"
+          element={<ResetPasswordPage />}
+        />
         <Route path="/404" element={<NotFoundPage />} />
         <Route path="/401" element={<UnauthorizedPage />} />
         <Route path="*" element={<NotFoundPage />} />

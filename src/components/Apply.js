@@ -56,6 +56,8 @@ const Apply = () => {
     "Financial Strategy",
   ];
 
+
+
   const PageDisplay = () => {
     if (page === 0) {
       return <UserInfo apply={apply} setApply={setApply} />;

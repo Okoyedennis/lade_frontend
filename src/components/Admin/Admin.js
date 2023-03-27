@@ -39,7 +39,7 @@ const Admin = () => {
       func: handleLoanApplication,
     },
     {
-      title: "View All Donation",
+      title: "View All Investors",
       func: handleDonationApplication,
     },
   ];
@@ -77,7 +77,7 @@ const Admin = () => {
             <DropdownButton
               className="btn mt-5"
               id="dropdown-basic-button"
-              title={"View All Donation"}
+              title={"View All Investors"}
             >
               {data.map(({ title, func }) => (
                 <>

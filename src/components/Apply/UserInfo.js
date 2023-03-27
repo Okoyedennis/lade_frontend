@@ -1,8 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const UserInfo = ({ apply, setApply }) => {
   const [countryState, setCountryState] = useState([]);
+
+  const currentUser = useSelector((state) => state.user.user);
 
   useEffect(() => {
     axios
@@ -39,7 +42,8 @@ const UserInfo = ({ apply, setApply }) => {
             aria-label="First name"
             name="firstName"
             required
-            value={apply.firstName}
+            disabled={true}
+            value={currentUser.firstName}
             onChange={(e) => handleChange(e)}
           />
         </div>
@@ -54,7 +58,8 @@ const UserInfo = ({ apply, setApply }) => {
             aria-label="Last name"
             name="lastName"
             required
-            value={apply.lastName}
+            disabled={true}
+            value={currentUser.lastName}
             onChange={(e) => handleChange(e)}
           />
         </div>
@@ -71,7 +76,8 @@ const UserInfo = ({ apply, setApply }) => {
             aria-label="Email"
             name="email"
             required
-            value={apply.email}
+            disabled={true}
+            value={currentUser.email}
             onChange={(e) => handleChange(e)}
           />
         </div>
@@ -99,20 +105,19 @@ const UserInfo = ({ apply, setApply }) => {
       <div className="row g-3">
         <div className="col">
           <label htmlFor="inputEmail4" className="form-label">
-            Gender
+            Last Name
           </label>
-          <select
-            id="inputState"
-            className="form-select"
-            name="gender"
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Last name"
+            aria-label="Last name"
+            name="lastName"
             required
-            value={apply.gender}
+            disabled={true}
+            value={currentUser.lastName}
             onChange={(e) => handleChange(e)}
-          >
-            <option selected>Choose...</option>
-            <option value="MALE">Male</option>
-            <option value="FEMALE">Female</option>
-          </select>
+          />
         </div>
         <div className="col">
           <label htmlFor="inputEmail4" className="form-label">

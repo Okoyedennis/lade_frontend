@@ -30,7 +30,7 @@ const AllDonation = () => {
           <div className="card mt-4 viewUsers">
             <div className="card-header d-flex justify-content-between p-4">
               <div className="col-6">
-                <h3>View All Users</h3>
+                <h3>View All Investors</h3>
               </div>
               <div className="col-4 text-end">
                 <input

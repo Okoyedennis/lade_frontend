@@ -1,36 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./SignIn.css";
-import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { BiMailSend } from "react-icons/bi";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import User from "../Model/User";
 import BASE_URL from "../Services/Constant";
-import { setCurrentUser } from "../../store/actions/user";
 
-
-const SignIn = () => {
+const ForgotPassword = () => {
   const [user, setUser] = useState(new User("", "", "", "", "", ""));
   const [loading, setLoading] = useState(false);
-  const [togglePassword, setTogglePassword] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const currentUser = useSelector((state) => state.user);
-
-    useEffect(() => {
-      if (currentUser?._id) {
-        navigate("/");
-      }
-      // eslint-disable-next-line
-    }, []);
-  
-  const togglePasswordView = () => {
-    setTogglePassword(!togglePassword);
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,17 +20,20 @@ const SignIn = () => {
     });
   };
 
-  const handleLogin = (e) => {
+  const handleForgotPassword = (e) => {
     e.preventDefault();
     setLoading(true);
 
-    axios
-      .post(`${BASE_URL}/users/login`, user)
-      .then((resp) => {
+    if (!user.email) {
+      setLoading(false);
+      return;
+    }
 
+    axios
+      .post(`${BASE_URL}/user/forgetPassword`, user)
+      .then((resp) => {
         if (resp.status === 200) {
-          dispatch(setCurrentUser(resp.data));
-          toast.success("Login successfully.", {
+          toast.success("Reset mail sent, please check your mail.", {
             position: "top-right",
             autoClose: 4000,
             hideProgressBar: true,
@@ -61,16 +44,12 @@ const SignIn = () => {
           });
         }
 
-        if (resp.status === 200) {
-          setTimeout(() => {
-            navigate("/");
-          }, 3000);
-        }
         setLoading(false);
+        setUser(new User("", "", "", "", "", ""));
       })
       .catch((error) => {
         setLoading(false);
-        if (error.response.status === 404) {
+        if (error.response.status === 404 || error.response.status === 500) {
           toast.error(error.response.data.message, {
             position: "top-right",
             autoClose: 4000,
@@ -101,9 +80,9 @@ const SignIn = () => {
         transition={Bounce}
       />
       <div className="login__wrapper container">
-        <form onSubmit={(e) => handleLogin(e)}>
+        <form onSubmit={(e) => handleForgotPassword(e)}>
           {/* <Link to="/"><img src={logo} alt="logo" /></Link> */}
-          <h1>Please sign in</h1>
+          <h1>Forgot Password</h1>
           <div className="form-float first_child">
             <BiMailSend />
             <input
@@ -116,26 +95,10 @@ const SignIn = () => {
               onChange={(e) => handleChange(e)}
             />
           </div>
-          <div className="form-float second_child">
-            <div onClick={togglePasswordView} style={{ cursor: "pointer" }}>
-              {togglePassword ? <BsFillEyeFill /> : <BsFillEyeSlashFill />}
-            </div>
-            <input
-              type={togglePassword ? "text" : "password"}
-              className="form-control"
-              placeholder="Password"
-              value={user.password}
-              name="password"
-              required
-              onChange={(e) => handleChange(e)}
-            />
-          </div>
-          <Link to="/forgotPassword" className="forgot_password">
-            Forgot Password
-          </Link>
+
           <div>
             <button
-              className="w-100 btn btn-lg btn-primary"
+              className="w-100 btn btn-lg btn-primary forgotPassword-btn"
               disabled={loading}
               type="submit"
             >
@@ -146,14 +109,11 @@ const SignIn = () => {
                 ></div>
               ) : (
                 <>
-                  <span className="sr-only">SignIn</span>
+                  <span className="sr-only">Send</span>
                 </>
               )}
             </button>
           </div>
-          <Link to="/signup">
-            <p>I don't have an account</p>
-          </Link>
           <p className="p">&copy; {new Date().getFullYear()}</p>
         </form>
       </div>
@@ -161,4 +121,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default ForgotPassword;
