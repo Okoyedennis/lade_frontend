@@ -20,7 +20,6 @@ const Navbar = () => {
   const detailsComponent = useRef();
 
   const handleClick = () => setClick(!click);
-  const handleUserDetails = () => setDetailsOpened(!detailsOpened);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -45,14 +44,13 @@ const Navbar = () => {
             draggable: true,
             progress: undefined,
           });
-        
         }
       })
       .catch((error) => {
         console.log(error);
       });
-        dispatch(clearCurrentUser());
-        navigate("/");
+    dispatch(clearCurrentUser());
+    navigate("/");
   };
 
   const closeMenu = () => setClick(false);
@@ -108,10 +106,14 @@ const Navbar = () => {
               <NavLink to="/admin">Admin Page</NavLink>
             </li>
           )}
-          <li className="nav-item">
+          <li
+            className="nav-item"
+            onMouseEnter={() => setDetailsOpened(true)}
+            onMouseLeave={() => setDetailsOpened(false)}
+          >
             {currentUser ? (
               <>
-                <div className="toggle" onClick={handleUserDetails}>
+                <div className="toggle">
                   Hello {currentUser?.user?.firstName}
                 </div>
                 {detailsOpened && (

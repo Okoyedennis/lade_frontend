@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,18 +10,15 @@ import "./Donate.css";
 
 const Donate = ({ setAmountFromDonation }) => {
   const [donation, setDonation] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
     country: "",
     bvn: "",
     amount: "",
     message: "",
   });
   const [country, setCountry] = useState([]);
-
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const currentUser = useSelector((state) => state.user.user);
 
   //To fatch the country of school
   useEffect(() => {
@@ -40,15 +38,25 @@ const Donate = ({ setAmountFromDonation }) => {
     setDonation((prevState) => {
       return { ...prevState, [name]: value };
     });
-      setAmountFromDonation(donation.amount)
+    setAmountFromDonation(donation.amount);
   };
 
   const handleDonation = (e) => {
     e.preventDefault();
     setLoading(true);
 
+    const donationData = {
+      firstName: currentUser.firstName,
+      lastName: currentUser.lastName,
+      email: currentUser.email,
+      country: donation.country,
+      bvn: donation.bvn,
+      amount: donation.amount,
+      message: donation.message,
+    };
+
     axios
-      .post(`${BASE_URL}/donation`, donation, {
+      .post(`${BASE_URL}/donation`, donationData, {
         headers: authHeader(),
       })
       .then((resp) => {
@@ -97,7 +105,8 @@ const Donate = ({ setAmountFromDonation }) => {
                   aria-label="First name"
                   name="firstName"
                   required
-                  value={donation.firstName}
+                  disabled={true}
+                  value={currentUser.firstName}
                   onChange={(e) => handleChange(e)}
                 />
               </div>
@@ -112,7 +121,8 @@ const Donate = ({ setAmountFromDonation }) => {
                   aria-label="Last name"
                   name="lastName"
                   required
-                  value={donation.lastName}
+                  disabled={true}
+                  value={currentUser.lastName}
                   onChange={(e) => handleChange(e)}
                 />
               </div>
@@ -129,7 +139,8 @@ const Donate = ({ setAmountFromDonation }) => {
                   aria-label="Email"
                   name="email"
                   required
-                  value={donation.email}
+                  disabled={true}
+                  value={currentUser.email}
                   onChange={(e) => handleChange(e)}
                 />
               </div>

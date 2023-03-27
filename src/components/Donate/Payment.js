@@ -7,7 +7,6 @@ const Payment = ({ amountFromDonation }) => {
   const publishablekey =
     "pk_test_51IbB5iJrhAChGpxwxROklguJqVX3OZiG6e2tnHjegK4jwuAFGWmUtGYtLWvDF0EGE4qsI5wfeNguLtPA4XNGJ24I00mo8wN45I";
   const onToken = (token) => {
-    console.log(token);
     setTimeout(() => {
       navigate("/");
     }, 2000);

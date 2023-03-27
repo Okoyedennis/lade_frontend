@@ -11,13 +11,14 @@ import Farm from "./Apply/Farm.js";
 import Equipment from "./Apply/Equipment.js";
 import Financial from "./Apply/Financial.js";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Apply = () => {
   const [page, setPage] = useState(0);
   const [apply, setApply] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
+    // firstName: "",
+    // lastName: "",
+    // email: "",
     stateOfOrigin: "",
     gender: "",
     dateOfBirth: "",
@@ -47,6 +48,7 @@ const Apply = () => {
   });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const currentUser = useSelector((state) => state.user.user);
 
   const FormTitles = [
     "Personal Info",
@@ -55,8 +57,6 @@ const Apply = () => {
     "Equipment",
     "Financial Strategy",
   ];
-
-
 
   const PageDisplay = () => {
     if (page === 0) {
@@ -70,6 +70,38 @@ const Apply = () => {
     } else if (page === 4) {
       return <Financial apply={apply} setApply={setApply} />;
     }
+  };
+
+  const applyData = {
+    firstName: currentUser.firstName,
+    lastName: currentUser.lastName,
+    email: currentUser.email,
+    stateOfOrigin: apply.stateOfOrigin,
+    gender: apply.gender,
+    dateOfBirth: apply.dateOfBirth,
+    bvn: apply.bvn,
+    amount: apply.amount,
+    plotLocation: apply.plotLocation,
+    market: apply.market,
+    water: apply.water,
+    hectars: apply.hectars,
+    grow: apply.grow,
+    rotateCrops: apply.rotateCrops,
+    harvests: apply.harvests,
+    pestManagement: apply.pestManagement,
+    integratedPestManagement: apply.integratedPestManagement,
+    soilTesting: apply.soilTesting,
+    equipment: apply.equipment,
+    marketingStrategy: apply.marketingStrategy,
+    netHouse: apply.netHouse,
+    hearNetHouse: apply.hearNetHouse,
+    netInterestProd: apply.netInterestProd,
+    moreIncome: apply.moreIncome,
+    firstInvestment: apply.firstInvestment,
+    findMoney: apply.findMoney,
+    diffLoan: apply.diffLoan,
+    upfrontPay: apply.upfrontPay,
+    payBackPeriod: apply.payBackPeriod,
   };
 
   return (
@@ -127,9 +159,8 @@ const Apply = () => {
 
               if (page === FormTitles.length - 1) {
                 setLoading(true);
-
                 axios
-                  .post(`${BASE_URL}/apply`, apply, {
+                  .post(`${BASE_URL}/apply`, applyData, {
                     headers: authHeader(),
                   })
                   .then((resp) => {
@@ -137,7 +168,6 @@ const Apply = () => {
 
                     if (resp.status === 201) {
                       navigate("/successApplySent");
-
                     }
 
                     setLoading(false);
