@@ -164,7 +164,6 @@ const Apply = () => {
                     headers: authHeader(),
                   })
                   .then((resp) => {
-                    console.log(resp);
 
                     if (resp.status === 201) {
                       navigate("/successApplySent");
