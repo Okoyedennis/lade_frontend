@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+
 :root {
   --primary-color: #5bb462;
   --primary-dark: #4f9c55;
   --secondary-color: #ffea00;
   --secondary-dark:#e3d002;
-  --overlay: rgba(0,0,0,.7);
+  --overlay: rgba(0,0,0,.5);
 }
 
 a{

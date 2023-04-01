@@ -1,0 +1,130 @@
+.howItWorks {
+  background-color: rgb(0, 65, 40);
+  height: auto;
+  width: 100%;
+  margin: 2rem 0rem;
+  padding: 3% 0%;
+}
+
+.howItWorks__wrapper {
+  display: flex;
+  gap: 2rem;
+  padding-top: 6%;
+}
+
+.howItWorks__left {
+  flex: 1;
+}
+
+.howItWorks__left h6 {
+  color: rgb(255, 203, 103);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.howItWorks__left h2 {
+  margin-bottom: 4%;
+  font-weight: 800;
+  font-size: 45px;
+  line-height: 1.4;
+  color: #fff;
+  font-family: 'DM Serif Display', serif;
+}
+
+.howItWorks__text-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  width: 100%;
+  column-gap: 10%;
+  row-gap: 5%;
+}
+
+.howItWorks__text-number {
+  background-color: rgb(0, 161, 89);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+}
+
+.howItWorks__text-number span {
+  color: #fff;
+  font-size: 12px;
+}
+
+.howItWorks__text-wrapper h5 {
+  color: rgb(155, 240, 190);
+  text-transform: capitalize;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.howItWorks__text {
+  line-height: 24px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.howItWorks__right {
+  flex: 1;
+}
+
+.howItWorks__right img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+@media screen and (max-width: 786px) {
+  .howItWorks {
+    height: auto;
+    padding: 3rem 0rem;
+  }
+
+  .howItWorks__wrapper {
+    padding-top: 0%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .howItWorks__right {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .howItWorks__right img {
+    margin: auto;
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 586px) {
+  .howItWorks {
+    height: 80rem;
+  }
+
+  .howItWorks__left h2 {
+    font-size: 32px;
+  }
+
+  .howItWorks__wrapper {
+    padding-top: 3rem;
+    height: fit-content;
+  }
+
+  .howItWorks__text-container {
+    row-gap: 3%;
+  }
+
+  .howItWorks__right {
+    display: none;
+  }
+}
