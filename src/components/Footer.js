@@ -4,8 +4,8 @@ import "./Footer.css";
 import { Role } from "./Model/Role";
 
 const Footer = () => {
-    const currentUser = useSelector((state) => state.user);
-   
+  const currentUser = useSelector((state) => state.user);
+
   return (
     <div className="footer">
       <div className="container">
@@ -34,7 +34,7 @@ const Footer = () => {
         </ul>
         <div className="bottom">
           <span className="line"></span>
-          <p>2021 Execute, Inc. All rights reserved</p>
+          <p>{new Date().getFullYear()} Execute, Inc. All rights reserved</p>
         </div>
       </div>
     </div>
