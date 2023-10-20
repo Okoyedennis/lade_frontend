@@ -1,5 +1,6 @@
 import React from "react";
 import { SiYourtraveldottv } from "react-icons/si";
+import { AiOutlineDollar } from "react-icons/ai";
 import { MdPeople, MdSchool } from "react-icons/md";
 import img from "../images/photo.jpeg";
 import "./About.css";
@@ -63,6 +64,15 @@ const About = () => {
           <p>
             Run your business, keep proper records, monitor sales and expenses
             to maximize profit and pay back the loan.
+          </p>
+        </div>
+        <div className="home_about-content">
+          <AiOutlineDollar className="icon" />
+          <h4>Why Invest</h4>
+          <p>
+            Grow your wealth over time. By earning returns on investments,
+            You can build substantial savings that can be used for
+            future financial needs or emergencies
           </p>
         </div>
       </div>

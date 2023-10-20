@@ -1,0 +1,64 @@
+.benefit {
+  padding: 2% 0%;
+}
+
+.benefit h2 {
+  text-align: center;
+  line-height: 1.4;
+  margin-bottom: 4%;
+  font-weight: 800;
+  font-size: 45px;
+  color: #000;
+  font-family: "DM Serif Display", serif;
+}
+
+.benefit__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.benefit__wrapper_content {
+  padding-bottom: 25px;
+}
+
+.benefit__wrapper_content h5 {
+  font-family: "DM Serif Display", serif;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  text-decoration: underline 2px rgb(255, 203, 103);
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.benefit__wrapper_content p {
+  line-height: 24px;
+  margin-bottom: 8px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.65);
+  font-weight: 400;
+}
+
+@media screen and (max-width: 786px) {
+  .benefit__wrapper_content {
+    width: 90%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .faq__left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .benefit__wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .benefit__wrapper_content {
+    width: 90%;
+    text-align: left;
+  }
+}

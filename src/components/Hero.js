@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <div className="hero">
       <div className="content container">
-        <p>Natural Healthy Food</p>
+        <p>Invest in an Agro Business</p>
         <p>
           At Lade farm, we provide the highest quality Organics Products for
           Nigeria and all around the world.

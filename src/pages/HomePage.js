@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import HowItWorks from "../components/HowItWorks/HowItWorks";
 import Navbar from "../components/Navbar";
+import Benefit from "../components/Benefit/Benefit";
 // import Testimonials from '../components/Testimonials';
 
 const HomePage = () => {
@@ -15,6 +16,7 @@ const HomePage = () => {
       <Hero />
       <About />
       <Demo />
+      <Benefit />
       <HowItWorks />
       <FAQ />
       <Footer />
